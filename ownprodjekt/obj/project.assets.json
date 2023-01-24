@@ -129,11 +129,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\edvin.arvesjo\\Desktop\\C#\\ownprodjekt\\ownprodjekt\\ownprodjekt.csproj",
+      "projectUniqueName": "C:\\Users\\edvin.arvesjo\\Desktop\\C#\\vinterprojekt\\ownprodjekt\\ownprodjekt.csproj",
       "projectName": "ownprodjekt",
-      "projectPath": "C:\\Users\\edvin.arvesjo\\Desktop\\C#\\ownprodjekt\\ownprodjekt\\ownprodjekt.csproj",
+      "projectPath": "C:\\Users\\edvin.arvesjo\\Desktop\\C#\\vinterprojekt\\ownprodjekt\\ownprodjekt.csproj",
       "packagesPath": "C:\\Users\\edvin.arvesjo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\edvin.arvesjo\\Desktop\\C#\\ownprodjekt\\ownprodjekt\\obj\\",
+      "outputPath": "C:\\Users\\edvin.arvesjo\\Desktop\\C#\\vinterprojekt\\ownprodjekt\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

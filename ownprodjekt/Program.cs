@@ -2,17 +2,29 @@
 // dont for get to use coments 
 using Raylib_cs;
 using System.Numerics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+// using System;
+// using System.Collections.Generic;
+// using System.Linq;
+// using System.Text;
 
 //test kommer att användas för att rätta se om man har rätt
-string test = " ";
+string test = "nej";
 //extra användes för att testa några saker men också för frågorna om färger 
-string extra = " ";
+string extra = "nej";
+string test3 = "you were right \npress Enter to continued \npress Tab to go back";
 
-Raylib.InitWindow(1500, 800, "fun games");
+
+// List<string> test4 = new List<string>();
+// test4.Add(" what color is the back\n ground, z blue, x maroon\n c magenta, v purple");
+// test4.Add("what color is the back\n z green, x blue\n c red, v gray");
+// test4.Add("what color is the back\n ");
+// int randomQ;
+// int test5;
+// " what color is the back\n ground, z blue, x maroon\n c magenta, v purple";
+int whichColor;
+
+
+Raylib.InitWindow(1600, 800, "fun games");
 Raylib.SetTargetFPS(60);
 
 Font lobsterFont = Raylib.LoadFontEx(@"Lobster-Regular.ttf", 125, null, -1);
@@ -40,7 +52,7 @@ Color textColor = textcolors[0];
 
 while (!Raylib.WindowShouldClose())
 {
-
+    Raylib.BeginDrawing();
 
     if (curentsceen == "start")
     {
@@ -54,12 +66,14 @@ while (!Raylib.WindowShouldClose())
     if (curentsceen == "menu")
     {
         // det gär för så att det inte ändras varje frame
-        int whichColor = generator.Next(31);
+        whichColor = generator.Next(31);
         if (whichColor >= 27)
         {
             whichColor = generator.Next(textcolors.Length);
             textColor = textcolors[whichColor];
         }
+
+
         Raylib.ClearBackground(Color.BLUE); 
         Raylib.DrawTextEx(lobsterFont, "welcome to the best ", new Vector2(20, 15), 80, 40, textColor);
         Raylib.DrawTextEx(lobsterFont, "kids game", new Vector2(20, 75), 80, 40, textColor);
@@ -96,9 +110,7 @@ while (!Raylib.WindowShouldClose())
         }
         if (test == "ja"){
             Raylib.ClearBackground(Color.BLUE);
-            Raylib.DrawTextEx(lobsterFont, "Du hade rätt", new Vector2(20, 190), 125, 10, Color.YELLOW);
-            Raylib.DrawTextEx(lobsterFont, "press Enter to continued", new Vector2(20, 290), 125, 10, Color.YELLOW);
-            Raylib.DrawTextEx(lobsterFont, "press Tap to go back", new Vector2(20, 390), 125, 10, Color.YELLOW);
+            Raylib.DrawTextEx(lobsterFont, test3, new Vector2(20, 190), 125, 10, Color.YELLOW);
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_TAB)){
                 curentsceen = "menu";
                 // test blir nej för att om man inte gör det och går till en annan fråga 
@@ -112,36 +124,35 @@ while (!Raylib.WindowShouldClose())
         }
     }
     if(curentsceen == "Color"){
-        if (test!="ja")
+        if (test == "nej"){
         Raylib.ClearBackground(Color.MAGENTA);
-        Raylib.DrawTextEx(lobsterFont, "what color is the back ", new Vector2(20, 190), 125, 10, Color.BLUE);
-        Raylib.DrawTextEx(lobsterFont, "ground, a blue, b maroon", new Vector2(20, 290), 125, 10, Color.BLUE);
-        Raylib.DrawTextEx(lobsterFont, "c magenta, d purple", new Vector2(20, 390), 125, 10, Color.BLUE);
+        Raylib.DrawTextEx(lobsterFont, " what color is the back\n ground, z blue, x maroon\n c magenta, v purple", new Vector2(20, 90), 90, 10, Color.WHITE);
+        }
         if (extra == "ja"){
-        Raylib.DrawTextEx(lobsterFont, "wrong color try again", new Vector2(20, 490), 125, 10, Color.BLUE);
+            Raylib.DrawTextEx(lobsterFont, " wrong color try again", new Vector2(20, 490), 125, 10, Color.WHITE);
 
         }
         //kunde inte hita ett kod för att checka om vad knappen man trykte var inte rätt
-        if (Raylib.IsKeyPressed(KeyboardKey.KEY_A)){
-        extra = "ja";
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_Z)){
+            extra = "ja";
 
         }
-        if (Raylib.IsKeyPressed(KeyboardKey.KEY_B)){
-        extra = "ja";
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_V)){
+            extra = "ja";
        
         }
-        if (Raylib.IsKeyPressed(KeyboardKey.KEY_D)){
-        extra = "ja";
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_X)){
+            extra = "ja";
         }
-        if (Raylib.IsKeyPressed(KeyboardKey.KEY_C)){
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_C)){
             test = "ja";
+            extra = "nej";
 
         }
         if (test == "ja"){
         Raylib.ClearBackground(Color.BLUE);
-        Raylib.DrawTextEx(lobsterFont, "Du hade rätt", new Vector2(20, 190), 125, 10, Color.YELLOW);
-        Raylib.DrawTextEx(lobsterFont, "press Enter to continued", new Vector2(20, 290), 125, 10, Color.YELLOW);
-        Raylib.DrawTextEx(lobsterFont, "press Tap to go back", new Vector2(20, 390), 125, 10, Color.YELLOW);
+        Raylib.DrawTextEx(lobsterFont, test3, new Vector2(20, 190), 125, 10, Color.YELLOW);
+       
         if (Raylib.IsKeyPressed(KeyboardKey.KEY_TAB)){
             curentsceen = "menu";
             test = "nej";
@@ -153,21 +164,42 @@ while (!Raylib.WindowShouldClose())
         }   
     }
     if(curentsceen == "spelling"){
+        if(test == "nej"){
         Raylib.ClearBackground(Color.BLACK);
         Raylib.DrawTextEx(lobsterFont, "how do you spell, Never", new Vector2(20, 290), 125, 10, Color.YELLOW);
-        
-    }
+        }
     //orkade inte checka alla boxtäver så jag märkte att om man kollar bokstaven R så hade de troligen rätt 
-    if (Raylib.IsKeyPressed(KeyboardKey.KEY_R)){
+        // if (Raylib.IsKeyPressed(KeyboardKey.KEY_N)){
+            
+        //     if (Raylib.IsKeyPressed(KeyboardKey.KEY_E)){
+
+        //         if (Raylib.IsKeyPressed(KeyboardKey.KEY_V)){
+
+        //             if (Raylib.IsKeyPressed(KeyboardKey.KEY_E)){
+
+         if (Raylib.IsKeyPressed(KeyboardKey.KEY_R)){
+            test = "ja";
+                            
+        }
+        //             }
+        //         }          
+        //     }
+        // }    
+        if (test == "ja"){
         Raylib.ClearBackground(Color.BLUE);
-        Raylib.DrawTextEx(lobsterFont, "Du hade rätt", new Vector2(20, 190), 125, 10, Color.YELLOW);
-        Raylib.DrawTextEx(lobsterFont, "press Enter to continued", new Vector2(20, 290), 125, 10, Color.YELLOW);
-        Raylib.DrawTextEx(lobsterFont, "press Tap to go back", new Vector2(20, 390), 125, 10, Color.YELLOW);
+        Raylib.DrawTextEx(lobsterFont, test3, new Vector2(20, 190), 125, 10, Color.YELLOW);
+
         if (Raylib.IsKeyPressed(KeyboardKey.KEY_TAB)){
             curentsceen = "menu";
+            test = "nej";
         }
         else if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER)){
             test = "nej";
+
         }
-        }  
+        }   
+    }
+    
+        
+        Raylib.EndDrawing();
     }
